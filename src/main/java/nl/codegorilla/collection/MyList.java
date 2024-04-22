@@ -1,8 +1,9 @@
 package nl.codegorilla.collection;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
-public class MyList<T> implements MyCollection<T> {
+public class MyList<T> implements MyCollection<T>, Iterable<T> {
     Object[] storage = new Object[3];
     int size = 0;
 
@@ -33,5 +34,21 @@ public class MyList<T> implements MyCollection<T> {
     @Override
     public String toString() {
         return "MyList [" + "storage=" + Arrays.toString(storage) + ", size=" + size + ']';
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            int index = 0;
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public T next() {
+                return (T) storage[index++];
+            }
+        };
     }
 }

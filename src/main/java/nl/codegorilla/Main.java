@@ -1,6 +1,5 @@
 package nl.codegorilla;
 
-import nl.codegorilla.collection.FruitList;
 import nl.codegorilla.collection.LinkedList;
 import nl.codegorilla.collection.MyList;
 import nl.codegorilla.produce.Apple;

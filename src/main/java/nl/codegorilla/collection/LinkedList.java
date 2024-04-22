@@ -1,5 +1,7 @@
 package nl.codegorilla.collection;
 
+import java.util.Iterator;
+
 public class LinkedList<T> implements MyCollection<T> {
     LinkedList.Node<T> root;
     LinkedList.Node<T> last;
@@ -37,6 +39,25 @@ public class LinkedList<T> implements MyCollection<T> {
 
     public String toString() {
         return "LinkedList [root=" + root + "]";
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            LinkedList.Node<T> current = root;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                T item = current.item;
+                current = current.next;
+                return item;
+            }
+        };
     }
 
     static class Node<E> {
